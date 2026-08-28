@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Интерактивный опросник Инженерно-экономического факультета"
+    />
+    <meta name="theme-color" content="#08205B" />
+    <title>Факт или ложь? — квиз ИЭФ</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="site-shell">
+      <header class="site-header" aria-label="Навигация">
+        <a class="brand" href="#" aria-label="Инженерно-экономический факультет">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="brand-letter">И</span>
+            <span class="brand-letter">Э</span>
+            <span class="brand-letter">Ф</span>
+          </span>
+        </a>
+      </header>
+
+      <section class="hero" id="intro-screen" aria-labelledby="intro-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Квиз Инженерно-экономического факультета</p>
+          <h1 id="intro-title">
+            Факт или<br />
+            <span>ложь?</span>
+          </h1>
+          <p class="hero-lead">
+            Тебя ждут 10 неожиданных историй о мировых компаниях. Отдели
+            реальные бизнес-факты от убедительных выдумок.
+          </p>
+
+          <div class="intro-actions">
+            <button class="button button-primary" id="start-button" type="button">
+              Начать тест
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="time-note">
+              <span class="time-icon" aria-hidden="true">◷</span>
+              Займёт около 3 минут
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-grid"></div>
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="visual-number">01</div>
+          <div class="visual-word">проверяй</div>
+          <div class="visual-chip chip-top">Технологии</div>
+          <div class="visual-chip chip-bottom">+ Экономика</div>
+          <svg class="visual-arrow" viewBox="0 0 160 110" role="presentation">
+            <path d="M8 89C58 97 82 57 117 31C132 20 143 18 153 19" />
+            <path d="M137 7L154 19L143 36" />
+          </svg>
+        </div>
+      </section>
+
+      <section class="quiz-screen" id="quiz-screen" aria-labelledby="question-title" hidden>
+        <div class="quiz-layout">
+          <aside class="quiz-aside">
+            <p class="eyebrow">Бизнес-квиз</p>
+            <p class="aside-title">10 фактов. Где правда?</p>
+            <p class="aside-copy">
+              Доверяй логике, но будь внимателен: некоторые выдумки звучат
+              убедительнее правды.
+            </p>
+            <div class="aside-index" aria-hidden="true">ИЭ</div>
+          </aside>
+
+          <div class="quiz-card">
+            <div class="progress-meta">
+              <span id="progress-label">Факт 1 из 10</span>
+              <span id="progress-percent">10%</span>
+            </div>
+            <div
+              class="progress-track"
+              role="progressbar"
+              aria-label="Прогресс теста"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="10"
+            >
+              <div class="progress-value" id="progress-value"></div>
+            </div>
+
+            <form id="quiz-form">
+              <fieldset class="question-fieldset">
+                <legend id="question-title"></legend>
+                <p class="question-hint" id="question-hint"></p>
+                <div class="answers" id="answers"></div>
+              </fieldset>
+
+              <div class="answer-feedback" id="answer-feedback" aria-live="polite" hidden>
+                <div class="feedback-mark" id="feedback-mark" aria-hidden="true"></div>
+                <div>
+                  <p class="feedback-title" id="feedback-title"></p>
+                  <p class="feedback-text" id="feedback-text"></p>
+                </div>
+              </div>
+
+              <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+
+              <div class="quiz-actions">
+                <button class="button button-secondary" id="back-button" type="button">
+                  <span aria-hidden="true">←</span>
+                  Назад
+                </button>
+                <button class="button button-primary" id="next-button" type="submit">
+                  Далее
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="result-screen" id="result-screen" aria-labelledby="result-title" hidden>
+        <div class="result-card">
+          <div class="score-panel" aria-label="Набранные баллы">
+            <p class="score-label">Результат теста</p>
+            <div class="score-lockup">
+              <span class="score-number" id="score-number">0</span>
+              <span class="score-slash" aria-hidden="true">/</span>
+              <span class="score-maximum">10</span>
+            </div>
+            <p class="score-caption">правильных ответов</p>
+            <p class="score-percent" id="score-percent">0%</p>
+          </div>
+
+          <div class="result-copy">
+            <p class="result-kicker" id="result-kicker">Твоя характеристика</p>
+            <h2 id="result-title"></h2>
+            <p class="result-description" id="result-description"></p>
+
+            <div class="result-actions">
+              <button class="button button-primary" id="restart-button" type="button">
+                Пройти ещё раз
+                <span aria-hidden="true">↻</span>
+              </button>
+              <button class="button button-secondary" id="copy-button" type="button">
+                Поделиться результатом
+              </button>
+            </div>
+            <p class="copy-status" id="copy-status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>Инженерия × Экономика × Будущее</span>
+        <span>ИЭФ · 2026</span>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
